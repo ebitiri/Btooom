@@ -11,6 +11,7 @@ import org.bukkit.plugin.Plugin;
 
 
 
+
 /**
  * {@link GameObject}の管理者。
  * 

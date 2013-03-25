@@ -6,7 +6,6 @@ import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import com.github.ebitiri.btooom.BukkitUtil;
 import com.github.ebitiri.btooom.system.EntityObject;
 
 
@@ -50,7 +49,12 @@ public class TimerBomb extends EntityObject<Item>{
 	
 	@Override
 	public void onRemove(){
-		BukkitUtil.safeExplode(getLocation(), power);
+		for(int i = 0; i < 8; i++){
+			double x = Math.random() * 6 - 3;
+			double y = Math.random() * 6 - 3;
+			double z = Math.random() * 6 - 3;
+			getManager().add(new DelayExplode(getLocation().clone().add(x,y,z), i * 5, power, i > 2));
+		}
 	}
 	
 }

@@ -1,9 +1,11 @@
 package com.github.ebitiri.btooom.system;
 
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.entity.EntityEvent;
 import org.bukkit.util.Vector;
+
 
 
 /**
@@ -45,6 +47,8 @@ public abstract class EntityObject<E extends Entity> extends GameObject{
 		return event.getEntity().equals(entity);
 	}
 	
+	/**世界を取得*/
+	public final World getWorld(){return entity.getWorld();}
 	/**場所を取得*/
 	public final Location getLocation(){return entity.getLocation();}
 	/** 速度を取得*/

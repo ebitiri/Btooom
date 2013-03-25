@@ -5,7 +5,6 @@ import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Snowball;
 import org.bukkit.util.Vector;
 
-import com.github.ebitiri.btooom.BukkitUtil;
 import com.github.ebitiri.btooom.system.EntityObject;
 
 
@@ -30,6 +29,6 @@ public class Grenade extends EntityObject<Projectile>{
 	
 	@Override
 	public void onRemove(){
-		BukkitUtil.safeExplode(getLocation(), power);
+		getLocation().getWorld().createExplosion(getLocation().subtract(getVelocity()), power);
 	}
 }

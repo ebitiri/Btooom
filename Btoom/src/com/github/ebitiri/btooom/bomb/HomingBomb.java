@@ -66,6 +66,6 @@ public class HomingBomb extends EntityObject<Projectile>{
 	
 	@Override
 	public void onRemove(){	
-		BukkitUtil.safeExplode(getLocation(), power);
+		getLocation().getWorld().createExplosion(getLocation(), power);
 	}
 }

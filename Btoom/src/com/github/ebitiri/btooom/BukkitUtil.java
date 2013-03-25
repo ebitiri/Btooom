@@ -24,20 +24,21 @@ public class BukkitUtil {
 	
 	
 	/**
-	 * ブロックを破壊しない爆発を起こす
-	 * @param l 爆破箇所
-	 * @param power　威力
+	 * 
 	 */
-	public static void safeExplode(Location l, float power){
-		l.getWorld().createExplosion(l.getX(), l.getY(), l.getZ(), power, false, false);
+	public static void explode(Location l, float power, boolean breakBlock, boolean fire){
+		l.getWorld().createExplosion(l.getX(), l.getY(), l.getZ(), power, fire, breakBlock);
 	}
+	
+	
 	
 	/**
 	 * 手持ちのアイテムを１つ減らす。１つしかなければ消去。
 	 * @param player
 	 * @param is
 	 */
-	public static void consumeItemInHand(Player player, ItemStack is){
+	public static void consumeItemInHand(Player player){
+		ItemStack is = player.getItemInHand();
 		if(is.getAmount() == 1){
 			player.getInventory().remove(is);
 		}else{
@@ -45,6 +46,12 @@ public class BukkitUtil {
 		}
 	}
 	
+	/**
+	 * ポーションをつくる
+	 * @param stack
+	 * @param dmg
+	 * @return
+	 */
 	public static ItemStack createPotion(int stack, int dmg){
 		ItemStack is = new ItemStack(Material.POTION, stack);
 		is.setDurability((short)dmg);
